@@ -6,14 +6,16 @@ import {
   Text,
   useToast,
 } from "@chakra-ui/react";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import useAuth from "../hooks/useAuth";
 import { collection, onSnapshot, query, where } from "firebase/firestore";
 import { db } from "../firebase";
 import { FaToggleOff, FaToggleOn, FaTrash } from "react-icons/fa";
 import { deleteTodo, toggleTodoStatus } from "../api/todo";
+
+
 const TodoList = () => {
-  const [todos, setTodos] = React.useState([]);
+  const [todos, setTodos] = useState([]);
 
   const { user } = useAuth();
   const toast = useToast();
@@ -105,6 +107,7 @@ const TodoList = () => {
                 </Badge>
               </Heading>
               <Text>{todo.description}</Text>
+              {todo.inCharge && <Text color="gray.500">[in charge of: {todo.inCharge}]</Text>}
             </Box>
           ))}
       </SimpleGrid>

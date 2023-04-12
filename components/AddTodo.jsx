@@ -1,4 +1,4 @@
-import React from "react";
+import { useState } from "react";
 import {
   Box,
   Input,
@@ -7,14 +7,19 @@ import {
   Stack,
   Select,
   useToast,
+  Center,
 } from "@chakra-ui/react";
 import useAuth from "../hooks/useAuth";
 import { addTodo } from "../api/todo";
+
+
+
 const AddTodo = () => {
-  const [title, setTitle] = React.useState("");
-  const [description, setDescription] = React.useState("");
-  const [status, setStatus] = React.useState("pending");
-  const [isLoading, setIsLoading] = React.useState(false);
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [status, setStatus] = useState("pending");
+  const [inCharge, setInCharge] = useState("")
+  const [isLoading, setIsLoading] = useState(false);
 
   const toast = useToast();
 
@@ -35,6 +40,7 @@ const AddTodo = () => {
       title,
       description,
       status,
+      inCharge,
       userId: user.uid,
     };
     await addTodo(todo);
@@ -43,6 +49,7 @@ const AddTodo = () => {
     setTitle("");
     setDescription("");
     setStatus("pending");
+    setInCharge("")
 
     toast({ title: "Todo created successfully", status: "success" });
   };
@@ -50,6 +57,8 @@ const AddTodo = () => {
   return (
     <Box w="40%" margin={"0 auto"} display="block" mt={5}>
       <Stack direction="column">
+      <Center>
+      <h3 >Add a new todo:</h3></Center>
         <Input
           placeholder="Title"
           value={title}
@@ -77,9 +86,15 @@ const AddTodo = () => {
           </option>
         </Select>
 
+        <Input
+          placeholder="Person in charge"
+          value={inCharge}
+          onChange={(e) => setInCharge(e.target.value)}
+        />
+
         <Button
           onClick={() => handleTodoCreate()}
-          disabled={title.length < 1 || description.length < 1 || isLoading}
+          isDisabled={title.length < 1 || isLoading}
           variantColor="teal"
           variant="solid"
         >

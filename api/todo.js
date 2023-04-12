@@ -7,13 +7,14 @@ import {
   deleteDoc,
 } from "firebase/firestore";
 
-const addTodo = async ({ userId, title, description, status }) => {
+const addTodo = async ({ userId, title, description, status, inCharge }) => {
   try {
     await addDoc(collection(db, "todo"), {
       user: userId,
       title: title,
       description: description,
       status: status,
+      inCharge: inCharge,
       createdAt: new Date().getTime(),
     });
   } catch (err) {}
