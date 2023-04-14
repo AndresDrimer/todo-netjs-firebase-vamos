@@ -55,10 +55,10 @@ const AddTodo = () => {
   };
 
   return (
-    <Box w="40%" margin={"0 auto"} display="block" mt={5}>
+    <Box w="90%" margin={"0 auto"} display="block" mt={5}>
       <Stack direction="column">
       <Center>
-      <h3 >Add a new todo:</h3></Center>
+      <h3 >New todo:</h3></Center>
         <Input
           placeholder="Title"
           value={title}

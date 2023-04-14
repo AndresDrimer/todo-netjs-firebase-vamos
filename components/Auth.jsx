@@ -1,4 +1,4 @@
-import { Box, Button, Link, Text, useColorMode } from "@chakra-ui/react";
+import { Badge, Box, Button, Link, Text, useColorMode } from "@chakra-ui/react";
 import { signInWithPopup, GoogleAuthProvider } from "firebase/auth";
 import { FaGoogle, FaMoon, FaSun } from "react-icons/fa";
 import { auth } from "../firebase";
@@ -6,7 +6,7 @@ import useAuth from "../hooks/useAuth";
 
 
 const Auth = () => {
-  const { toggleColorMode, colorMode } = useColorMode();
+
   const { isLoggedIn, user } = useAuth();
 
   const handleAuth = async () => {
@@ -34,12 +34,10 @@ const Auth = () => {
 
   return (
     <Box maxW="300px" display="flex" flexDirection="column" align="center" justify="center" m="auto">
-      <Button onClick={() => toggleColorMode()}>
-        {colorMode == "dark" ? <FaSun /> : <FaMoon />}
-      </Button>{" "}
+     {" "}
       {isLoggedIn && (
         <>
-          <Text color="green.500">logged with: {user.email}</Text>
+          <Text color="green.500"><Badge>{">>"}</Badge> {user.email}</Text>
           <Link color="red.500" onClick={() => auth.signOut()}>
             Logout
           </Link>

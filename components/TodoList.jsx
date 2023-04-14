@@ -57,7 +57,7 @@ const TodoList = () => {
 
   return (
     <Box mt={5}>
-      <SimpleGrid columns={{ base: 1, md: 3 }} spacing={8}>
+      <SimpleGrid columns={{ base: 1, md: 2 }} spacing={8}>
         {todos &&
           todos.map((todo) => (
             <Box
