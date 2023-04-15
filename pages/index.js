@@ -14,6 +14,7 @@ export default function Home() {
         borderWidth="1px"
         borderRadius="3xl"
         boxShadow="dark-lg"
+        py="30px"
       >
         <Navbar />
         <Auth />

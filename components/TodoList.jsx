@@ -63,10 +63,13 @@ const TodoList = () => {
             <Box
               key={todo.id}
               p={3}
+             
+              
               boxShadow="2xl"
               shadow={"dark-lg"}
               transition="0.2s"
-              _hover={{ boxShadow: "sm" }}
+              rounded="lg"
+              _hover={{ boxShadow: "sm", bg: "transparent" }}
             >
               <Heading as="h3" fontSize={"xl"}>
                 {todo.title}{" "}

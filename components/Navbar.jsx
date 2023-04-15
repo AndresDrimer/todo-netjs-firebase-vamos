@@ -12,7 +12,7 @@ function Navbar() {
           {colorMode == "dark" ? <FaSun /> : <FaMoon />}
         </Button>
         </Flex><Flex>
-        <Heading textAlign="center" flex="3" fontSize='6xl' py="5">
+        <Heading textAlign="center" flex="3" fontSize='8xl' py="5" textShadow='1px 1px gray' mt="-20px">
           TODO
         </Heading>
       </Flex>
